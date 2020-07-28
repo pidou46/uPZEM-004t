@@ -15,10 +15,15 @@ micropython V1.12
 
 Most of the code is in the umodbus library.
 
-I have made some minor changes the "timeout_char" have been changed from 10 to 2.
-PZEM-004t seem's not to use timeout_char=10 #TO BE CHECKED A SECOND TIME
-
-
+Warning: read_input_registers return 
+"Traceback (most recent call last):
+  File "<stdin>", line 6, in <module>
+  File "uModBusSerial.py", line 155, in read_input_registers
+  File "uModBusSerial.py", line 106, in _send_receive
+  File "uModBusSerial.py", line 111, in _validate_resp_hdr
+OSError: no data received from slave"
+    
+When to power side of the PZEM-004t is unpluged
 
 (2358, 87, 0, 99, 0, 11, 0, 500, 48, 0)
 
