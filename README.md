@@ -41,4 +41,4 @@ When to power side of the PZEM-004t is unpluged
 #Alarm status 0 = not alarm
 
 
-request "read_input_registers" takes about : 112_ms
+request "read_input_registers" takes about : 100_ms
