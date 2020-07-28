@@ -1,6 +1,6 @@
 import uModBusSerial
 #pins [tx,rx]
-serial=uModBusSerial.uModBusSerial(1,pins=[12,13,-1,-1])
+serial=uModBusSerial.uModBusSerial(1,pins=[12,13])
 
 data = serial.read_input_registers(1,0,10)
 #data = serial.read_coils(1,0,10)
