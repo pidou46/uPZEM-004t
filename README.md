@@ -34,3 +34,6 @@ PZEM-004t seem's not to use timeout_char=10 #TO BE CHECKED A SECOND TIME
 #Frequency value x0.1Hz = 50,0Hz
 #Power factor value x0.01 = 0.48
 #Alarm status 0 = not alarm
+
+
+request is quite long : 15s
