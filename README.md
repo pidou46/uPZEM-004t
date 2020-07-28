@@ -2,6 +2,17 @@
 
 This repository consist of a micropython script to manage PZEM-004t powermeter device.
 
+Hardware:
+- esp32
+    connect tx to pin 12 and rx to pin 13
+- PZEM-004t V3
+    add 1khom resitor between 5V and CT 81 7C
+    
+firmware: 
+micropython V1.12
+
+
+
 Most of the code is in the umodbus library.
 
 I have made some minor changes the "timeout_char" have been changed from 10 to 2.
