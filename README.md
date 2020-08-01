@@ -42,3 +42,5 @@ When to power side of the PZEM-004t is unpluged
 
 
 request "read_input_registers" takes about : 100_ms
+
+Todo: write a async version
