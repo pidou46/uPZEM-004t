@@ -27,6 +27,11 @@ Not every PZEM-004t functions have been implemented, only the following:
 >>> test.read_input_registers(1)
 '[233.6, 0.08700001, 9.8, 11, 50.0, 0.48]'
 ```
+You will the following error if the device is not conencted to AC power
+
+```OSError: no data received from slave```
+
+
 
   ```reset_energy(slave_addr)``` : PZEM-004t have an internal energy counter, this function will rest it to 0Wh
 
