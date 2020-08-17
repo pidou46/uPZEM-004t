@@ -36,7 +36,7 @@ Not every PZEM-004t functions have been implemented, only the following:
 
 Note: power precision is bound to 0.1_W resolution.
 Depending on the application need it may be better to calculate it from voltage, 
-current and power factor (P=/U/*/I/*/PF) to get a better resolution:
+current and power factor (P=UxIxPF) to get a better resolution:
 ```
   Voltage: 235.8_V
   Current: 0.086_A
