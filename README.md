@@ -11,7 +11,7 @@ It need to be lowered to 3.3v to communicate with ESP32.
 The easiest way to do it is to add a 1khom resitance between the 5V pin of the connectign port and the closet pin to U3 symbol.
 
 ## Dependency
-This library is dependent upon uModBus library
+This library is dependent upon uModBus library: https://github.com/techbase123/micropython-modbus
 
 
 
