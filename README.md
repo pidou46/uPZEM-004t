@@ -20,7 +20,7 @@ Not every PZEM-004t functions have been implemented, only the following:
   ```read_input_registers(slave_addr)``` : it will return a tupple with: Voltage, Current, Power, Energy, Frequency, Power factor
 
 
-here is an example:
+Here is an example:
 ```
   Voltage: 235.8_V
   Current: 0.086_A
