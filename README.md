@@ -19,9 +19,7 @@ Not every PZEM-004t functions have been implemented, only the following:
 
   read_input_registers(slave_addr) : it will return a tupple with: Voltage, Current, Power, Energy, Frequency, Power factor
 
-note: power precision is bound to 0.1_W resolution.
-depending on the application need it may be better to calculate it from voltage, 
-current and power factor to get a better resolution.
+
 here is an example:
 ```
   Voltage: 235.8_V
@@ -32,3 +30,6 @@ here is an example:
   Frequency: 50.0_Hz
   Power factor: 0.48
 ``
+note: power precision is bound to 0.1_W resolution.
+depending on the application need it may be better to calculate it from voltage, 
+current and power factor to get a better resolution.
