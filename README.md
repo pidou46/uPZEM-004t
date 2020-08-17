@@ -40,10 +40,8 @@ current and power factor (P=UxIxPF) to get a better resolution:
 ```
   Voltage: 235.8_V
   Current: 0.086_A
+  Power factor: 0.48
   Power: 9.8_W
   Power calc: 9.733824
-  Energy: 7_Wh
-  Frequency: 50.0_Hz
-  Power factor: 0.48
 ```
 
