@@ -17,7 +17,7 @@ This library is dependent upon uModBus library
 
 Not every PZEM-004t functions have been implemented, only the following:
 
-  read_input_registers(slave_addr) : it will return a tupple with: Voltage, Current, Power, Energy, Frequency, Power factor
+  ```read_input_registers(slave_addr)``` : it will return a tupple with: Voltage, Current, Power, Energy, Frequency, Power factor
 
 
 here is an example:
@@ -33,3 +33,5 @@ here is an example:
 note: power precision is bound to 0.1_W resolution.
 depending on the application need it may be better to calculate it from voltage, 
 current and power factor to get a better resolution.
+
+  ```reset_energy(slave_addr)``` : PZEM-004t have an internal energy counter, this function will rest it to 0Wh
