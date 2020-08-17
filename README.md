@@ -23,10 +23,12 @@ note: power precision is bound to 0.1_W resolution.
 depending on the application need it may be better to calculate it from voltage, 
 current and power factor to get a better resolution.
 here is an example:
-  `Voltage: 235.8_V
+```
+  Voltage: 235.8_V
   Current: 0.086_A
   Power: 9.8_W
   Power calc: 9.733824
   Energy: 7_Wh
   Frequency: 50.0_Hz
-  Power factor: 0.48``
+  Power factor: 0.48
+``
