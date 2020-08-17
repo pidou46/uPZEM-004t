@@ -1,6 +1,6 @@
 """micropython library to manage PZEM_004t_V3.0 (AC measuring device)"""
 
-import uModBusSerial, json, time
+import uModBusSerial
 import uModBusFunctions
 import uModBusConst
 import struct
@@ -14,7 +14,8 @@ class uPZEM(uModBusSerial.uModBusSerial):
     def read_input_registers(self, slave_addr, starting_address=0, register_quantity=10, signed=True):
         register_value=list(range(6))
         modbus_pdu = uModBusFunctions.read_input_registers(starting_address, register_quantity)
-      
+        
+        #resp_data=bytearray(b'\t%\x00Z\x00\x00\x00d\x00\x00\x00\x19\x00\x00\x01\xf4\x00/\x00\x00')
         resp_data = self._send_receive(modbus_pdu, slave_addr, True)
 
         register_value[0]=int.from_bytes(resp_data[0:2],'big') * 0.1 #1LSB 0.1V
@@ -30,7 +31,7 @@ class uPZEM(uModBusSerial.uModBusSerial):
         register_value[4]=int.from_bytes(resp_data[14:16],'big') * 0.1 #1LSB 0.1Hz
         register_value[5]=int.from_bytes(resp_data[16:18],'big') * 0.01 #1LSB 0.01V
 
-        return json.dumps(register_value)
+        return register_value
 
     def reset_energy(self, slave_addr):
         """pdu specific to PZEM (non modbus standard) to rest energy counter"""
@@ -41,7 +42,7 @@ class uPZEM(uModBusSerial.uModBusSerial):
 
 if __name__=="__main__":
     counter_grid=uPZEM(1,pins=[12,13])
-    data=json.loads(counter_grid.read_input_registers(1))
+    data=counter_grid.read_input_registers(1)
     print("Voltage: {}_V".format(data[0]))
     print("Current: {}_A".format(data[1]))
     print("Power: {}_W".format(data[2]))
@@ -51,28 +52,6 @@ if __name__=="__main__":
     print("Power factor: {}".format(data[5]))
 
 
-#test=bytearray(b'\t%\x00Z\x00\x00\x00d\x00\x00\x00\x19\x00\x00\x01\xf4\x00/\x00\x00')
 
-#len(test)
-#20
-#struct.unpack('>hhhhhhhhhh',test)
-#(2341, 90, 0, 100, 0, 25, 0, 500, 47, 0)
-    
-
-
-
-
-#response
-#2353, 88, 0, 99, 0, 9, 0, 499, 48, 0
-#Voltage value x0.1V = 235,3V
-#Current value low 16 bits x0.001A = 0.088A
-#Current value high 16 bits =0
-#Power value low 16 bits x0.1W = 9,9W
-#Power value high 16 bits =0
-#Energy value low 16 bits x1Wh = 9Wh
-#Energy value high 16 bits =0
-#Frequency value x0.1Hz = 50,0Hz
-#Power factor value x0.01 = 0.48
-#Alarm status 0 = not alarm
 
 
