@@ -37,6 +37,12 @@ You will the following error if the device is not conencted to AC power ```OSErr
 >>> test.reset_energy(1)
 ```
 
+Memory usage:
+```
+>>> use: 160
+```
+
+
 Note: power precision is bound to 0.1_W resolution.
 Depending on the application need it may be better to calculate it from voltage, 
 current and power factor (P=UxIxPF) to get a better resolution:
