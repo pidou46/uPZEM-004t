@@ -54,7 +54,7 @@ current and power factor (P=UxIxPF) to get a better resolution:
   Power calc: 9.733824
 ```
 
-Todo:
+##Todo:
 
 I used modbus lib mainly because of CRC16 calculation, but it seems to be a lighter way to do it :
 
