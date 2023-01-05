@@ -30,18 +30,25 @@ class PZEM():
         self.sreader = asyncio.StreamReader(self.uart)
         self.delay = Delay_ms()
         self.response = ""
+        #build data request with address of the device at cronstruction time to avoid crc calculation later.
         self.request = bytes('','utf-8') + bytes([address]) + bytes('\x04\x00\x00\x04','utf-8')
         self.request += crc16(request)
+        asyncio.create_task(self._send())
         asyncio.create_task(self._recv())
+
+    async def _send(self):
+        while True:
+            await pzem.send_command(self.request)
+            await asyncio.sleep(1) #delay between request to be addded as a parameter in constructor
+
 
     async def _recv(self):
         while True:
-            res = await self.sreader.read(40)
+            res = await self.sreader.read(40) # the device does not send ed of line, so I read some data. TODO: testing -1
             self.delay.trigger(self.timeout)  # Got something, retrigger timer
 
     async def send_command(self, command):
         self.response = ""  # Discard any pending messages
-        #command=crc16()
         if command is None:
             print('Timeout test.')
         else:
@@ -67,13 +74,7 @@ async def main():
     uart=UART(1)
     pzem = PZEM(uart,address=0x01)
 
-    for cmd in ['Run', None]:
-        cmd=b'\x01\x04\x00\x00\x04'
-        res = await pzem.send_command(cmd)
-        if res:
-            print(f'Result is: {res}')
-        else:
-            print('Timed out waiting for result.')
+        
 
 
 if __name__=="__main__":
@@ -86,4 +87,3 @@ if __name__=="__main__":
         asyncio.new_event_loop()
         print('as_demos.auart_hd.test() to run again.')
 
-test()
