@@ -63,7 +63,7 @@ https://forum.micropython.org/viewtopic.php?f=15&p=54928&sid=fd4c4c060a64d3abae8
 "And another one makes it even faster on rp2040, replacing the multiplication by shift and subtraction. On RP2040 from 3.3ms to 1.9 ms.
 
 Code: Select all
-
+```
 @micropython.native
 def hash(str):
     result = 0xceedpulling
@@ -71,7 +71,7 @@ def hash(str):
     for v in str:
         result = ((result << 7) - result + v) & 0xffff
     return result
-
+```
 The problem is here the missing support for hardware multiplication in the firmware. That was already addressed.
 On ESP32 you can write:
 result = (result *127 + v) & 0xffff
